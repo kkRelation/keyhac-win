@@ -5,7 +5,6 @@ dict/migemo-dict
 doc/html/
 doc/obj/
 keyhac.ini
-config.py
 doc/html_ja/
 doc/html_en/
 build/

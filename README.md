@@ -1,8 +1,8 @@
 # Keyhac Custom Actions
 
-This repository keeps user-defined automation bindings in `config.py` and `extension/`.
+This repository keeps the Keyhac runtime at the repo root and user-defined automation in `custom_config/`, `extensions/`, `tools/`, and `generated/`.
 
-Shortcut ownership is documented in [HOTKEY_OWNERSHIP.md](HOTKEY_OWNERSHIP.md).
+Shortcut ownership is documented in [docs/hotkeys/HOTKEY_OWNERSHIP.md](docs/hotkeys/HOTKEY_OWNERSHIP.md).
 
 ## Maintenance Rule
 
@@ -21,18 +21,18 @@ When adding power-key letter sequences such as `f-n` or `g-c-p`:
 | Shortcut | Scope | Behavior | Source |
 | --- | --- | --- | --- |
 | `U1-A` | Global | Send the native `CapsLock` key | `kanata_config/win_to_f19.kbd` |
-| `C-A-S-7` / `C-A-S-8` / `C-A-S-9` / `C-A-S-0` / `C-A-S--` | Global | Toggle `RAlt` / `RCtrl` / `RShift` / `Win` / `Caps` User-mode state | `config.py` |
+| `C-A-S-7` / `C-A-S-8` / `C-A-S-9` / `C-A-S-0` / `C-A-S--` | Global | Toggle `RAlt` / `RCtrl` / `RShift` / `Win` / `Caps` User-mode state | `custom_config/main.py` |
 | `U0+Alt` | Global | Send the native `LWin` key | `kanata_config/win_to_f19.kbd` |
 | `Ctrl+U1` / `U1+Ctrl` | Global | Toggle komorebi modal mode on/off | `kanata_config/win_to_f19.kbd` |
-| `C-S-A-U` | Global | Toggle all five User-mode states on/off together | `config.py` |
-| `U1+;` | Global | Open clipboard history list and start incremental search | `config.py` |
-| `U0-0` | Global | Toggle macro recording | `config.py` |
-| `U0-3` | Global | Play the recorded macro | `config.py` |
-| `U0-Left` / `U0-Right` / `U0-Up` / `U0-Down` | Global | Move the current window by 10px | `config.py` |
-| `U0-Space` | Global | Open the application launcher list and start incremental search | `extension/app_launcher.py` |
-| `U0-A-Left` / `U0-A-Right` / `U0-A-Up` / `U0-A-Down` | Global | Move the mouse cursor by 10px | `extension/mouse_ext.py` |
-| `D-U0-A-Space` / `U-U0-A-Space` | Global | Hold / release left mouse button | `extension/mouse_ext.py` |
-| `U0-A-PageUp` / `U0-A-PageDown` | Global | Mouse wheel up / down | `extension/mouse_ext.py` |
+| `C-S-A-U` | Global | Toggle all five User-mode states on/off together | `custom_config/main.py` |
+| `U1+;` | Global | Open clipboard history list and start incremental search | `custom_config/main.py` |
+| `U0-0` | Global | Toggle macro recording | `custom_config/main.py` |
+| `U0-3` | Global | Play the recorded macro | `custom_config/main.py` |
+| `U0-Left` / `U0-Right` / `U0-Up` / `U0-Down` | Global | Move the current window by 10px | `custom_config/main.py` |
+| `U0-Space` | Global | Open the application launcher list and start incremental search | `extensions/apps/app_launcher.py` |
+| `U0-A-Left` / `U0-A-Right` / `U0-A-Up` / `U0-A-Down` | Global | Move the mouse cursor by 10px | `extensions/input/mouse_ext.py` |
+| `D-U0-A-Space` / `U-U0-A-Space` | Global | Hold / release left mouse button | `extensions/input/mouse_ext.py` |
+| `U0-A-PageUp` / `U0-A-PageDown` | Global | Mouse wheel up / down | `extensions/input/mouse_ext.py` |
 | `Alt+U1+O` / `U1+Alt+O` | Global | Run `komorebic reload-configuration` | `kanata_config/win_to_f19.kbd` |
 | `U1+I` / `U1+Q` / `U1+M` | Global | Open Python shortcuts palette / close window / minimize window | `kanata_config/win_to_f19.kbd` |
 | `U1+H` / `U1+J` / `U1+K` / `U1+L` | Global | Focus window left / down / up / right in komorebi | `kanata_config/win_to_f19.kbd` |
@@ -49,19 +49,19 @@ When adding power-key letter sequences such as `f-n` or `g-c-p`:
 | `H/J/K/L` in modal mode | Global | Focus window left / down / up / right in komorebi | `kanata_config/win_to_f19.kbd` |
 | `Shift+H/J/K/L` in modal mode | Global | Move window left / down / up / right in komorebi | `kanata_config/win_to_f19.kbd` |
 | `1..8` in modal mode | Global | Focus workspace 0..7 in komorebi | `kanata_config/win_to_f19.kbd` |
-| `g-c-p` | Global / Coding apps | Type the preset git-commit phrase | `extension/coding_ext.py` |
-| `g-p-p` | Global / Coding apps | Type the preset git-pull-merge-push phrase | `extension/coding_ext.py` |
-| `s-p-7` / `s-p-5` | Global | Launch native `pwsh` / `powershell` | `extension/terminal_matrix_ext.py` |
-| `r-p-7` / `r-p-5` | Global | Launch `rio` with `pwsh` / `powershell` | `extension/terminal_matrix_ext.py` |
-| `g-p-7` / `g-p-5` | Global | Launch `ghostty` with `pwsh` / `powershell` | `extension/terminal_matrix_ext.py` |
-| `f-n` | `texstudio.exe` | Paste `\Footnote{}` and move cursor left | `extension/texstudio_ext.py` |
-| `U2-C` | `texstudio.exe` | Bracket-inner Copy (C-A-[ then C-C) | `extension/texstudio_ext.py` |
-| `U2-D` | `texstudio.exe` | Bracket-outer Copy (C-A-] then C-C) | `extension/texstudio_ext.py` |
-| `U2-X` | `texstudio.exe` | Bracket-inner Cut (C-A-[ then C-X) | `extension/texstudio_ext.py` |
-| `U2-S` | `texstudio.exe` | Bracket-outer Cut (C-A-] then C-X) | `extension/texstudio_ext.py` |
-| `U2-V` | `texstudio.exe` | Bracket-inner Paste (C-A-[ then C-V) | `extension/texstudio_ext.py` |
-| `U2-F` | `texstudio.exe` | Bracket-outer Paste (C-A-] then C-V) | `extension/texstudio_ext.py` |
-| `U0-W` | Global | Open the window switcher list with incremental search | `extension/window_switcher.py` |
+| `g-c-p` | Global / Coding apps | Type the preset git-commit phrase | `extensions/ui/coding_ext.py` |
+| `g-p-p` | Global / Coding apps | Type the preset git-pull-merge-push phrase | `extensions/ui/coding_ext.py` |
+| `s-p-7` / `s-p-5` | Global | Launch native `pwsh` / `powershell` | `extensions/ui/terminal_matrix_ext.py` |
+| `r-p-7` / `r-p-5` | Global | Launch `rio` with `pwsh` / `powershell` | `extensions/ui/terminal_matrix_ext.py` |
+| `g-p-7` / `g-p-5` | Global | Launch `ghostty` with `pwsh` / `powershell` | `extensions/ui/terminal_matrix_ext.py` |
+| `f-n` | `texstudio.exe` | Paste `\Footnote{}` and move cursor left | `extensions/tex/texstudio_ext.py` |
+| `U2-C` | `texstudio.exe` | Bracket-inner Copy (C-A-[ then C-C) | `extensions/tex/texstudio_ext.py` |
+| `U2-D` | `texstudio.exe` | Bracket-outer Copy (C-A-] then C-C) | `extensions/tex/texstudio_ext.py` |
+| `U2-X` | `texstudio.exe` | Bracket-inner Cut (C-A-[ then C-X) | `extensions/tex/texstudio_ext.py` |
+| `U2-S` | `texstudio.exe` | Bracket-outer Cut (C-A-] then C-X) | `extensions/tex/texstudio_ext.py` |
+| `U2-V` | `texstudio.exe` | Bracket-inner Paste (C-A-[ then C-V) | `extensions/tex/texstudio_ext.py` |
+| `U2-F` | `texstudio.exe` | Bracket-outer Paste (C-A-] then C-V) | `extensions/tex/texstudio_ext.py` |
+| `U0-W` | Global | Open the window switcher list with incremental search | `extensions/window/window_switcher.py` |
 
 ## List Window Controls
 
