@@ -1,5 +1,8 @@
 from extensions.clipboard.clipboard_commands import make_paste_text_without_history_command
 
+ENABLE_RESUME_SEQUENCE = False
+ENABLE_FORK_SEQUENCE = False
+
 
 def add_git_commit_sequence(keymap, powerkey):
     powerkey.add(
