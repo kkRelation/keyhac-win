@@ -37,7 +37,7 @@ When adding power-key letter sequences such as `f-n` or `g-c-p`:
 | `U1+I` / `U1+Q` / `U1+M` | Global | Open Python shortcuts palette / close window / minimize window | `kanata_config/win_to_f19.kbd` |
 | `U1+H` / `U1+J` / `U1+K` / `U1+L` | Global | Focus window left / down / up / right in komorebi | `kanata_config/win_to_f19.kbd` |
 | `Alt+U1+[` / `Alt+U1+]` / `U1+Alt+[` / `U1+Alt+]` | Global | Cycle komorebi focus backward / forward | `kanata_config/win_to_f19.kbd` |
-| `Alt+U1+H` / `Alt+U1+J` / `Alt+U1+K` / `Alt+U1+L` / `Alt+U1+Enter` / `U1+Alt+H` / `U1+Alt+J` / `U1+Alt+K` / `U1+Alt+L` / `U1+Alt+Enter` | Global | Move window left / down / up / right or promote in komorebi | `kanata_config/win_to_f19.kbd` |
+| `Alt+U1+H` / `Alt+U1+J` / `Alt+U1+K` / `Alt+U1+L` / `Alt+U1+Tnter` / `U1+Alt+H` / `U1+Alt+J` / `U1+Alt+K` / `U1+Alt+L` / `U1+Alt+Enter` | Global | Move window left / down / up / right or promote in komorebi | `kanata_config/win_to_f19.kbd` |
 | `U1+Left` / `U1+Down` / `U1+Up` / `U1+Right` | Global | Stack window left / down / up / right in komorebi | `kanata_config/win_to_f19.kbd` |
 | `U1+'` / `U1+[` / `U1+]` | Global | Unstack or cycle stack in komorebi | `kanata_config/win_to_f19.kbd` |
 | `U1+=` / `U1+-` / `Alt+U1+=` / `Alt+U1+-` / `U1+Alt+=` / `U1+Alt+-` | Global | Resize komorebi container horizontally / vertically | `kanata_config/win_to_f19.kbd` |

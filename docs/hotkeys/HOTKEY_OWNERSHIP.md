@@ -18,7 +18,7 @@ This file is the practical KKK ownership map for the current setup.
 | `U1+I` | Launch komorebi shortcuts UI | `kanata_config/win_to_f19.kbd` |
 | `U1+Q` / `U1+M` | Close / minimize window | `kanata_config/win_to_f19.kbd` |
 | `U1+H/J/K/L` | Focus window left / down / up / right | `kanata_config/win_to_f19.kbd` |
-| `Alt+U1+H/J/K/L` / `Alt+U1+Enter` | Move window or promote | `kanata_config/win_to_f19.kbd` |
+| `Alt+U1+H/J/K/L` / `Alt+U1+Tnter` | Move window or promote | `kanata_config/win_to_f19.kbd` |
 | `U1+Left/Down/Up/Right` | Stack window left / down / up / right | `kanata_config/win_to_f19.kbd` |
 | `U1+'` / `U1+[` / `U1+]` | Unstack / cycle stack | `kanata_config/win_to_f19.kbd` |
 | `U1+,` / `U1+.` | Cycle layout previous / next | `kanata_config/win_to_f19.kbd` |
