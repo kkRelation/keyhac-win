@@ -23,6 +23,11 @@ global KH_ModifierSymbols := Map(
     "RW", ">#"
 )
 
+global KH_KanataChordAliases := Map(
+    ; kanata_config/win_to_f19.kbd maps real caps+spc to this chord.
+    "U1-SPACE", "^!+F12"
+)
+
 KH_InitUserModifiers() {
     ; Keep physical key state reliable for F19-F23 and future diagnostics.
     InstallKeybdHook true
@@ -41,7 +46,7 @@ KH_Bind(chord, action, options := "On") {
 }
 
 KH_ParseChord(chord) {
-    global KH_UserModifierKeys, KH_ModifierSymbols
+    global KH_UserModifierKeys, KH_ModifierSymbols, KH_KanataChordAliases
 
     parts := StrSplit(chord, "-")
     if parts.Length < 2 {
@@ -67,8 +72,21 @@ KH_ParseChord(chord) {
     }
 
     suffix := parts[parts.Length]
-    hotkeyName := "*" nativePrefix KH_NormalizeKeyName(suffix)
+    canonicalChord := KH_CanonicalChord(userMods, suffix)
+    if KH_KanataChordAliases.Has(canonicalChord) {
+        hotkeyName := "*" nativePrefix KH_KanataChordAliases[canonicalChord]
+    } else {
+        hotkeyName := "*" nativePrefix KH_NormalizeKeyName(suffix)
+    }
     return { chord: chord, userMods: userMods, hotkey: hotkeyName }
+}
+
+KH_CanonicalChord(userMods, suffix) {
+    canonical := ""
+    for modName in userMods {
+        canonical .= (canonical = "" ? "" : "-") modName
+    }
+    return canonical "-" StrUpper(suffix)
 }
 
 KH_MakeCondition(userMods) {
