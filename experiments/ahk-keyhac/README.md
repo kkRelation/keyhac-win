@@ -19,7 +19,16 @@ Run:
 & 'C:\Program Files\AutoHotkey\v2\AutoHotkey64.exe' '.\experiments\ahk-keyhac\KeyhacAhk.ahk'
 ```
 
-The current entry script registers smoke-test bindings such as `U0-W`,
-`U1-Space`, and `U2-C`; each shows a tooltip. The important part is
-`core/modifiers.ahk`, which exposes `KH_Bind("U1-W", callback)` for later
-Keyhac-style migration work.
+The important part is `core/modifiers.ahk`, which exposes
+`KH_Bind("U1-W", callback)` for Keyhac-style migration work.
+
+Currently migrated local-only bindings:
+
+- `U0-C`: in supported terminals, copy the current working directory to the
+  clipboard by typing a shell command and pressing Enter after a short delay;
+  otherwise fall back to `Alt+D`, then `Ctrl+C`.
+
+Do not port Keyhac's bundled sample bindings unless the local `keyhac` or
+`keyhac-win` configuration changed their behavior. For example, the virtual
+mouse bindings under `U0-A-*` already exist in the upstream
+`keyhac_183/keyhac/_config.py` sample.

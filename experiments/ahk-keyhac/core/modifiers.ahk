@@ -54,36 +54,46 @@ KH_ParseChord(chord) {
     }
 
     userMods := []
+    semanticMods := []
     nativePrefix := ""
+    edge := ""
 
     Loop parts.Length - 1 {
         token := StrUpper(parts[A_Index])
         if KH_UserModifierKeys.Has(token) {
             userMods.Push(token)
+            semanticMods.Push(token)
         } else if KH_ModifierSymbols.Has(token) {
             nativePrefix .= KH_ModifierSymbols[token]
+            semanticMods.Push(token)
         } else if token = "D" || token = "U" {
-            ; Keyhac supports D-/U- edge bindings. This prototype leaves edge
-            ; timing to later modules; accept and ignore for now.
-            continue
+            if edge != "" {
+                throw ValueError("Only one edge token is allowed.", -1, chord)
+            }
+            edge := token
         } else {
             throw ValueError("Unknown modifier token.", -1, token)
         }
     }
 
     suffix := parts[parts.Length]
-    canonicalChord := KH_CanonicalChord(userMods, suffix)
+    canonicalChord := KH_CanonicalChord(semanticMods, suffix)
     if KH_KanataChordAliases.Has(canonicalChord) {
-        hotkeyName := "*" nativePrefix KH_KanataChordAliases[canonicalChord]
+        hotkeyName := "*" KH_KanataChordAliases[canonicalChord]
     } else {
         hotkeyName := "*" nativePrefix KH_NormalizeKeyName(suffix)
     }
+
+    if edge = "U" {
+        hotkeyName .= " Up"
+    }
+
     return { chord: chord, userMods: userMods, hotkey: hotkeyName }
 }
 
-KH_CanonicalChord(userMods, suffix) {
+KH_CanonicalChord(mods, suffix) {
     canonical := ""
-    for modName in userMods {
+    for modName in mods {
         canonical .= (canonical = "" ? "" : "-") modName
     }
     return canonical "-" StrUpper(suffix)
