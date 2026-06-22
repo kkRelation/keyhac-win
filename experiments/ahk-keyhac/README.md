@@ -27,8 +27,16 @@ Currently migrated local-only bindings:
 - `U0-C`: in supported terminals, copy the current working directory to the
   clipboard by typing a shell command and pressing Enter after a short delay;
   otherwise fall back to `Alt+D`, then `Ctrl+C`.
+- `U0-Left/Right/Up/Down`: move the mouse cursor by 10 px.
+- `D-U0-Space` / `U-U0-Space`: hold / release the left mouse button.
+- `U0-PageUp/PageDown`: mouse wheel up / down.
+- `U0-Home/End`: mouse horizontal wheel left / right.
+- `U0+Alt` alone: restore native `LWin` tap behavior while leaving
+  `U0+Alt+other-key` passthrough intact.
 
 Do not port Keyhac's bundled sample bindings unless the local `keyhac` or
 `keyhac-win` configuration changed their behavior. For example, the virtual
 mouse bindings under `U0-A-*` already exist in the upstream
-`keyhac_183/keyhac/_config.py` sample.
+`keyhac_183/keyhac/_config.py` sample. This prototype intentionally remaps
+that mouse layer from `U0-A-*` to plain `U0-*` to preserve Kanata's
+`U0+Alt => LWin` behavior.

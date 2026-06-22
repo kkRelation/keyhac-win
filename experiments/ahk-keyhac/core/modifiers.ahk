@@ -79,9 +79,9 @@ KH_ParseChord(chord) {
     suffix := parts[parts.Length]
     canonicalChord := KH_CanonicalChord(semanticMods, suffix)
     if KH_KanataChordAliases.Has(canonicalChord) {
-        hotkeyName := "*" KH_KanataChordAliases[canonicalChord]
+        hotkeyName := KH_KanataChordAliases[canonicalChord]
     } else {
-        hotkeyName := "*" nativePrefix KH_NormalizeKeyName(suffix)
+        hotkeyName := nativePrefix KH_NormalizeKeyName(suffix)
     }
 
     if edge = "U" {
@@ -127,6 +127,8 @@ KH_NormalizeKeyName(keyName) {
         "BACKSLASH", "\",
         "OPENBRACKET", "[",
         "CLOSEBRACKET", "]",
+        "PAGEUP", "PgUp",
+        "PAGEDOWN", "PgDn",
         "MINUS", "-",
         "EQUAL", "="
     )
