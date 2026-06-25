@@ -4,6 +4,7 @@
 
 SetWorkingDir A_ScriptDir
 #Include "core\modifiers.ahk"
+#Include "extensions\clipboard\selection_passthrough.ahk"
 #Include "extensions\input\mouse.ahk"
 #Include "extensions\input\native_passthrough.ahk"
 #Include "extensions\system\copy_path.ahk"
@@ -16,6 +17,7 @@ SetWorkingDir A_ScriptDir
 ;   rctrl  -> F22 -> U3
 ;   rshift -> F23 -> U4
 KH_InitUserModifiers()
+KH_InitSelectionPassthroughExt()
 KH_InitMouseExt()
 KH_InitNativePassthroughExt()
 KH_InitCopyPathExt()

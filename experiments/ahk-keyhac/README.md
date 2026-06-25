@@ -27,6 +27,7 @@ Currently migrated local-only bindings:
 - `U0-C`: in supported terminals, copy the current working directory to the
   clipboard by typing a shell command and pressing Enter after a short delay;
   otherwise fall back to `Alt+D`, then `Ctrl+C`.
+- `U0-A`: probe-copy the current selection, then pass through `Alt+L`.
 - `U0-Left/Right/Up/Down`: move the mouse cursor by 10 px.
 - `D-U0-Space` / `U-U0-Space`: hold / release the left mouse button.
 - `U0-PageUp/PageDown`: mouse wheel up / down.
