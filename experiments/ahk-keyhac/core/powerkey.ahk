@@ -9,6 +9,7 @@ global KH_PowerKeyTapTimeoutMs := 50
 global KH_PowerKeyHintTimeoutMs := 3000
 global KH_PowerKeyHintGen := 0
 global KH_PowerKeyHintBackend := "gui"
+global KH_PowerKeyHintPosition := "cursor"
 
 class KH_PowerKeyNode {
     __New() {
@@ -466,17 +467,17 @@ KH_PowerKey_ShowTimedHint(path, detail) {
 }
 
 KH_PowerKey_ShowHintText(path, detail) {
-    global KH_PowerKeyHintBackend
+    global KH_PowerKeyHintBackend, KH_PowerKeyHintPosition
 
     x := 0
     y := 0
-    if KH_PowerKey_GetCaretPoint(&x, &y) {
+    if KH_PowerKeyHintPosition = "caret" && KH_PowerKey_GetCaretPoint(&x, &y) {
         KH_PowerKey_RenderHint(path, detail, x + 12, y + 22)
         return
     }
 
     MouseGetPos(&x, &y)
-    KH_PowerKey_RenderHint(path, detail, x + 16, y + 18)
+    KH_PowerKey_RenderHint(path, detail, x + 75, y - 8)
 }
 
 KH_PowerKey_RenderHint(path, detail, x, y) {

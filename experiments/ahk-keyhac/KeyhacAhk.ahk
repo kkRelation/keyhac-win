@@ -3,6 +3,9 @@
 #Warn
 
 SetWorkingDir A_ScriptDir
+CoordMode "Mouse", "Screen"
+CoordMode "ToolTip", "Screen"
+CoordMode "Caret", "Screen"
 #Include "core\modifiers.ahk"
 #Include "core\powerkey_hint_gui.ahk"
 #Include "core\powerkey.ahk"
