@@ -14,18 +14,12 @@ global KH_RIO_CONFIG_HOME := "D:\C2D\dotfiles\rio"
 global KH_RIO_CONFIG_PATH := KH_RIO_CONFIG_HOME "\config.toml"
 
 KH_InitTerminalMatrixExt() {
-    KH_PowerKey_AddMany("s", Map(
-        "p-7", (*) => KH_LaunchTerminal("native", "ps7"),
-        "p-5", (*) => KH_LaunchTerminal("native", "ps5")
-    ))
-    KH_PowerKey_AddMany("r", Map(
-        "p-7", (*) => KH_LaunchTerminal("rio", "ps7"),
-        "p-5", (*) => KH_LaunchTerminal("rio", "ps5")
-    ))
-    KH_PowerKey_AddMany("g", Map(
-        "p-7", (*) => KH_LaunchTerminal("ghostty", "ps7"),
-        "p-5", (*) => KH_LaunchTerminal("ghostty", "ps5")
-    ))
+    KH_PowerKey_Add("s", "p-7", (*) => KH_LaunchTerminal("native", "ps7"), "__global__", "", "Windows Terminal PS7")
+    KH_PowerKey_Add("s", "p-5", (*) => KH_LaunchTerminal("native", "ps5"), "__global__", "", "Windows Terminal PS5")
+    KH_PowerKey_Add("r", "p-7", (*) => KH_LaunchTerminal("rio", "ps7"), "__global__", "", "Rio PS7")
+    KH_PowerKey_Add("r", "p-5", (*) => KH_LaunchTerminal("rio", "ps5"), "__global__", "", "Rio PS5")
+    KH_PowerKey_Add("g", "p-7", (*) => KH_LaunchTerminal("ghostty", "ps7"), "__global__", "", "Ghostty PS7")
+    KH_PowerKey_Add("g", "p-5", (*) => KH_LaunchTerminal("ghostty", "ps5"), "__global__", "", "Ghostty PS5")
 }
 
 KH_LaunchTerminal(terminalKind, shellKind) {

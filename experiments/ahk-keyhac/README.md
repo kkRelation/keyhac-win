@@ -26,7 +26,8 @@ The important part is `core/modifiers.ahk`, which exposes
 terminal-matrix, and app-specific sequence migrations. It uses a Keyhac-style
 down/up dispatcher with context-only flusher hotkeys, replaying cancelled text
 prefixes as key events so IME composition can continue. The tap/continuation
-timeout is 50ms.
+timeout is 50ms. Active sequences show a lightweight caret/mouse `ToolTip`
+with the current key path and next candidates.
 
 Currently migrated local-only bindings:
 

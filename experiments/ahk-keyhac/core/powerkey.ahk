@@ -11,6 +11,7 @@ class KH_PowerKeyNode {
     __New() {
         this.children := Map()
         this.action := ""
+        this.label := ""
     }
 }
 
@@ -34,7 +35,7 @@ class KH_PowerKeyContext {
     }
 }
 
-KH_PowerKey_Add(prefix, sequence, action, scopeName := "__global__", winTitle := "") {
+KH_PowerKey_Add(prefix, sequence, action, scopeName := "__global__", winTitle := "", label := "") {
     prefix := KH_PowerKey_CanonicalKey(prefix)
     keys := KH_PowerKey_ParseSequence(sequence)
     if keys.Length = 0 {
@@ -56,6 +57,7 @@ KH_PowerKey_Add(prefix, sequence, action, scopeName := "__global__", winTitle :=
         KH_PowerKey_RegisterActiveKey(key)
     }
     node.action := action
+    node.label := label
 
     KH_PowerKey_RegisterPrefix(prefix)
     KH_PowerKey_RegisterFlushers()
@@ -192,6 +194,7 @@ KH_PowerKey_OnKeyDown(key) {
     }
 
     KH_PowerKeyActiveCtx := KH_PowerKeyContext(key, KH_PowerKey_KeyToHotkey(key), nodes)
+    KH_PowerKey_ShowHint(KH_PowerKeyActiveCtx)
 }
 
 KH_PowerKey_OnKeyUp(key) {
@@ -243,12 +246,14 @@ KH_PowerKey_TrySuffixDown(ctx, key) {
     ctx.matched.Push(key)
     for node in nextNodes {
         if node.action != "" {
-            node.action.Call()
             ctx.done := true
             KH_PowerKeyActiveCtx := ""
+            KH_PowerKey_HideHint()
+            node.action.Call()
             return true
         }
     }
+    KH_PowerKey_ShowHint(ctx)
     return true
 }
 
@@ -287,6 +292,7 @@ KH_PowerKey_TapExpired(ctx, gen) {
     if KH_PowerKeyActiveCtx == ctx && ctx.gen = gen && !ctx.done {
         KH_PowerKey_SendKey(ctx.prefix)
         KH_PowerKeyActiveCtx := ""
+        KH_PowerKey_HideHint()
     }
 }
 
@@ -310,6 +316,7 @@ KH_PowerKey_Cancel(ctx, emitPrefix) {
     global KH_PowerKeyActiveCtx
 
     KH_PowerKeyActiveCtx := ""
+    KH_PowerKey_HideHint()
     if emitPrefix {
         KH_PowerKey_SendKey(ctx.prefix)
         Sleep(10)
@@ -425,4 +432,98 @@ KH_PowerKey_KeyToHotkey(key) {
 KH_PowerKey_SendKey(key) {
     sendName := KH_PowerKey_KeyToHotkey(key)
     SendEvent "{Blind}{" sendName "}"
+}
+
+KH_PowerKey_ShowHint(ctx) {
+    text := KH_PowerKey_BuildHintText(ctx)
+    if text = "" {
+        KH_PowerKey_HideHint()
+        return
+    }
+
+    x := 0
+    y := 0
+    if KH_PowerKey_GetCaretPoint(&x, &y) {
+        ToolTip(text, x + 12, y + 22, 19)
+        return
+    }
+
+    MouseGetPos(&x, &y)
+    ToolTip(text, x + 16, y + 18, 19)
+}
+
+KH_PowerKey_HideHint() {
+    ToolTip(, , , 19)
+}
+
+KH_PowerKey_GetCaretPoint(&x, &y) {
+    try {
+        CaretGetPos(&x, &y)
+        if x != "" && y != "" {
+            return true
+        }
+    }
+    return false
+}
+
+KH_PowerKey_BuildHintText(ctx) {
+    path := KH_PowerKey_FormatPath(ctx)
+    candidates := KH_PowerKey_CollectCandidates(ctx)
+    if candidates.Length = 0 {
+        return path
+    }
+
+    text := path "`n"
+    for item in candidates {
+        text .= item "`n"
+    }
+    return RTrim(text, "`n")
+}
+
+KH_PowerKey_FormatPath(ctx) {
+    path := KH_PowerKey_DisplayKey(ctx.prefix)
+    for key in ctx.matched {
+        path .= " " KH_PowerKey_DisplayKey(key)
+    }
+    return path
+}
+
+KH_PowerKey_CollectCandidates(ctx) {
+    seen := Map()
+    candidates := []
+    for node in ctx.nodes {
+        for key, child in node.children {
+            if seen.Has(key) {
+                continue
+            }
+            seen[key] := true
+            label := child.label
+            if label = "" && child.children.Count > 0 {
+                label := "..."
+            }
+            if label = "" {
+                candidates.Push(KH_PowerKey_DisplayKey(key))
+            } else {
+                candidates.Push(KH_PowerKey_DisplayKey(key) "  " label)
+            }
+        }
+    }
+    return candidates
+}
+
+KH_PowerKey_DisplayKey(key) {
+    labels := Map(
+        "space", "Space",
+        "tab", "Tab",
+        "enter", "Enter",
+        "esc", "Esc",
+        "back", "Backspace",
+        "pageup", "PageUp",
+        "pagedown", "PageDown",
+        "left", "Left",
+        "right", "Right",
+        "up", "Up",
+        "down", "Down"
+    )
+    return labels.Has(key) ? labels[key] : key
 }
