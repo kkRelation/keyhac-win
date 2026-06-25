@@ -6,6 +6,8 @@ global KH_PowerKeyRegisteredPrefixes := Map()
 global KH_PowerKeyRegisteredActiveKeys := Map()
 global KH_PowerKeyActiveCtx := ""
 global KH_PowerKeyTapTimeoutMs := 50
+global KH_PowerKeyHintTimeoutMs := 3000
+global KH_PowerKeyHintGen := 0
 
 class KH_PowerKeyNode {
     __New() {
@@ -239,6 +241,7 @@ KH_PowerKey_TrySuffixDown(ctx, key) {
 
     if nextNodes.Length = 0 {
         KH_PowerKey_Cancel(ctx, true)
+        KH_PowerKey_ShowMissHint(ctx, key)
         return false
     }
 
@@ -248,7 +251,7 @@ KH_PowerKey_TrySuffixDown(ctx, key) {
         if node.action != "" {
             ctx.done := true
             KH_PowerKeyActiveCtx := ""
-            KH_PowerKey_HideHint()
+            KH_PowerKey_ShowActionHint(ctx, node)
             node.action.Call()
             return true
         }
@@ -292,7 +295,6 @@ KH_PowerKey_TapExpired(ctx, gen) {
     if KH_PowerKeyActiveCtx == ctx && ctx.gen = gen && !ctx.done {
         KH_PowerKey_SendKey(ctx.prefix)
         KH_PowerKeyActiveCtx := ""
-        KH_PowerKey_HideHint()
     }
 }
 
@@ -316,7 +318,6 @@ KH_PowerKey_Cancel(ctx, emitPrefix) {
     global KH_PowerKeyActiveCtx
 
     KH_PowerKeyActiveCtx := ""
-    KH_PowerKey_HideHint()
     if emitPrefix {
         KH_PowerKey_SendKey(ctx.prefix)
         Sleep(10)
@@ -441,6 +442,32 @@ KH_PowerKey_ShowHint(ctx) {
         return
     }
 
+    KH_PowerKey_ShowTimedHintText(text)
+}
+
+KH_PowerKey_ShowMissHint(ctx, failedKey) {
+    text := KH_PowerKey_FormatPath(ctx, failedKey) "`nno match"
+    KH_PowerKey_ShowTimedHintText(text)
+}
+
+KH_PowerKey_ShowActionHint(ctx, node) {
+    text := KH_PowerKey_FormatPath(ctx)
+    if node.label != "" {
+        text .= "`n" node.label
+    }
+    KH_PowerKey_ShowTimedHintText(text)
+}
+
+KH_PowerKey_ShowTimedHintText(text) {
+    global KH_PowerKeyHintGen, KH_PowerKeyHintTimeoutMs
+
+    KH_PowerKeyHintGen += 1
+    gen := KH_PowerKeyHintGen
+    KH_PowerKey_ShowHintText(text)
+    SetTimer((*) => KH_PowerKey_HideHintIfCurrent(gen), -KH_PowerKeyHintTimeoutMs)
+}
+
+KH_PowerKey_ShowHintText(text) {
     x := 0
     y := 0
     if KH_PowerKey_GetCaretPoint(&x, &y) {
@@ -453,7 +480,18 @@ KH_PowerKey_ShowHint(ctx) {
 }
 
 KH_PowerKey_HideHint() {
+    global KH_PowerKeyHintGen
+
+    KH_PowerKeyHintGen += 1
     ToolTip(, , , 19)
+}
+
+KH_PowerKey_HideHintIfCurrent(gen) {
+    global KH_PowerKeyHintGen
+
+    if KH_PowerKeyHintGen = gen {
+        KH_PowerKey_HideHint()
+    }
 }
 
 KH_PowerKey_GetCaretPoint(&x, &y) {
@@ -480,10 +518,13 @@ KH_PowerKey_BuildHintText(ctx) {
     return RTrim(text, "`n")
 }
 
-KH_PowerKey_FormatPath(ctx) {
+KH_PowerKey_FormatPath(ctx, extraKey := "") {
     path := KH_PowerKey_DisplayKey(ctx.prefix)
     for key in ctx.matched {
         path .= " " KH_PowerKey_DisplayKey(key)
+    }
+    if extraKey != "" {
+        path .= " " KH_PowerKey_DisplayKey(extraKey)
     }
     return path
 }
