@@ -24,6 +24,7 @@ The important part is `core/modifiers.ahk`, which exposes
 
 Currently migrated local-only bindings:
 
+- `Ctrl+Alt+R`: reload this AHK script.
 - `U0-C`: in supported terminals, copy the current working directory to the
   clipboard by typing a shell command and pressing Enter after a short delay;
   otherwise fall back to `Alt+D`, then `Ctrl+C`.

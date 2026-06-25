@@ -16,6 +16,8 @@ SetWorkingDir A_ScriptDir
 ;   ralt   -> F21 -> U2
 ;   rctrl  -> F22 -> U3
 ;   rshift -> F23 -> U4
+^!r::Reload
+
 KH_InitUserModifiers()
 KH_InitSelectionPassthroughExt()
 KH_InitMouseExt()
