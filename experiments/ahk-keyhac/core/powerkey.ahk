@@ -446,14 +446,16 @@ KH_PowerKey_ShowHint(ctx) {
 }
 
 KH_PowerKey_ShowMissHint(ctx, failedKey) {
-    text := KH_PowerKey_FormatPath(ctx, failedKey) "`nno match"
+    path := KH_PowerKey_FormatPath(ctx, failedKey)
+    text := path "`n" KH_PowerKey_HintIndent(path) "no match"
     KH_PowerKey_ShowTimedHintText(text)
 }
 
 KH_PowerKey_ShowActionHint(ctx, node) {
-    text := KH_PowerKey_FormatPath(ctx)
+    path := KH_PowerKey_FormatPath(ctx)
+    text := path
     if node.label != "" {
-        text .= "`n" node.label
+        text .= "`n" KH_PowerKey_HintIndent(path) node.label
     }
     KH_PowerKey_ShowTimedHintText(text)
 }
@@ -511,11 +513,24 @@ KH_PowerKey_BuildHintText(ctx) {
         return path
     }
 
+    indent := KH_PowerKey_HintIndent(path)
     text := path "`n"
     for item in candidates {
-        text .= item "`n"
+        text .= indent item "`n"
     }
     return RTrim(text, "`n")
+}
+
+KH_PowerKey_HintIndent(path) {
+    return StrRepeat(Chr(0x2007), StrLen(path) + 2)
+}
+
+StrRepeat(text, count) {
+    result := ""
+    Loop count {
+        result .= text
+    }
+    return result
 }
 
 KH_PowerKey_FormatPath(ctx, extraKey := "") {
