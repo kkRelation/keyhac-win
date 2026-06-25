@@ -7,6 +7,7 @@ SetWorkingDir A_ScriptDir
 #Include "extensions\input\mouse.ahk"
 #Include "extensions\input\native_passthrough.ahk"
 #Include "extensions\system\copy_path.ahk"
+#Include "extensions\window\move_window.ahk"
 
 ; Kanata exports:
 ;   lmet   -> F19 -> U0
@@ -18,3 +19,4 @@ KH_InitUserModifiers()
 KH_InitMouseExt()
 KH_InitNativePassthroughExt()
 KH_InitCopyPathExt()
+KH_InitMoveWindowExt()

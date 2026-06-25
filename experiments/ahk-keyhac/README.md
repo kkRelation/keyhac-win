@@ -33,6 +33,7 @@ Currently migrated local-only bindings:
 - `U0-Home/End`: mouse horizontal wheel left / right.
 - `U0+Alt` alone: restore native `LWin` tap behavior while leaving
   `U0+Alt+other-key` passthrough intact.
+- `C-U0-Left/Right/Up/Down`: move the active window by 10 px.
 
 Do not port Keyhac's bundled sample bindings unless the local `keyhac` or
 `keyhac-win` configuration changed their behavior. For example, the virtual
