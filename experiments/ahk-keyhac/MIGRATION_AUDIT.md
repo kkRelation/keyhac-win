@@ -36,7 +36,7 @@ Scope: migrate only personal `keyhac-win/custom_config` and `keyhac-win/extensio
 | Terminal matrix | `s p-7`, `s p-5`, `r p-7`, `r p-5`, `g p-7`, `g p-5` | `extensions/ui/terminal_matrix_ext.py` | Initial AHK migration. Uses current Explorer path via COM, otherwise `%USERPROFILE%`. |
 | URL launcher framework | registered sequences | `extensions/apps/url_launcher.py` | No concrete registration found in current entry point; keep as reusable later design. |
 
-Status: `core/powerkey.ahk` now provides the initial AHK sequence-engine API. Git snippets and terminal matrix are registered.
+Status: `core/powerkey.ahk` now provides a Keyhac-style AHK sequence dispatcher. Git snippets and terminal matrix are registered.
 
 ## P4: App-Specific
 

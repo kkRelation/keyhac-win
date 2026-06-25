@@ -23,10 +23,10 @@ The important part is `core/modifiers.ahk`, which exposes
 `KH_Bind("U1-W", callback)` for Keyhac-style migration work.
 
 `core/powerkey.ahk` provides the initial PowerKey sequence engine for snippet,
-terminal-matrix, and app-specific sequence migrations. It supports plain
-prefix/suffix key sequences via `InputHook` and replays cancelled text prefixes
-as key events so IME composition can continue. The current timeout is 220ms,
-which is intentionally a test compromise between sequence entry and IME latency.
+terminal-matrix, and app-specific sequence migrations. It uses a Keyhac-style
+down/up dispatcher with context-only flusher hotkeys, replaying cancelled text
+prefixes as key events so IME composition can continue. The tap/continuation
+timeout is 50ms.
 
 Currently migrated local-only bindings:
 
