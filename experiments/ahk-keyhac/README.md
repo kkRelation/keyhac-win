@@ -27,8 +27,11 @@ terminal-matrix, and app-specific sequence migrations. It uses a Keyhac-style
 down/up dispatcher with context-only flusher hotkeys, replaying cancelled text
 prefixes as key events so IME composition can continue. The tap/continuation
 timeout is 50ms. Active sequences show a lightweight caret/mouse `ToolTip`
-with the current key path and next candidates. Hint updates use a three-second
-debounce: each sequence progress, match, or no-match update resets the timer.
+or GUI hint with the current key path and next candidates. The default GUI
+backend uses a small non-activating, click-through window with a mono font and
+a distinct first-line style; the ToolTip backend remains available as fallback.
+Hint updates use a three-second debounce: each sequence progress, match, or
+no-match update resets the timer.
 
 Currently migrated local-only bindings:
 

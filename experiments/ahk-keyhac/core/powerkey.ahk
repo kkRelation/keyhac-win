@@ -8,6 +8,7 @@ global KH_PowerKeyActiveCtx := ""
 global KH_PowerKeyTapTimeoutMs := 50
 global KH_PowerKeyHintTimeoutMs := 3000
 global KH_PowerKeyHintGen := 0
+global KH_PowerKeyHintBackend := "gui"
 
 class KH_PowerKeyNode {
     __New() {
@@ -436,49 +437,63 @@ KH_PowerKey_SendKey(key) {
 }
 
 KH_PowerKey_ShowHint(ctx) {
-    text := KH_PowerKey_BuildHintText(ctx)
-    if text = "" {
+    hint := KH_PowerKey_BuildHintText(ctx)
+    if hint[1] = "" && hint[2] = "" {
         KH_PowerKey_HideHint()
         return
     }
 
-    KH_PowerKey_ShowTimedHintText(text)
+    KH_PowerKey_ShowTimedHint(hint[1], hint[2])
 }
 
 KH_PowerKey_ShowMissHint(ctx, failedKey) {
     path := KH_PowerKey_FormatPath(ctx, failedKey)
-    text := path "`n" KH_PowerKey_HintIndent(path) "no match"
-    KH_PowerKey_ShowTimedHintText(text)
+    KH_PowerKey_ShowTimedHint(path, "no match")
 }
 
 KH_PowerKey_ShowActionHint(ctx, node) {
     path := KH_PowerKey_FormatPath(ctx)
-    text := path
-    if node.label != "" {
-        text .= "`n" KH_PowerKey_HintIndent(path) node.label
-    }
-    KH_PowerKey_ShowTimedHintText(text)
+    KH_PowerKey_ShowTimedHint(path, node.label)
 }
 
-KH_PowerKey_ShowTimedHintText(text) {
+KH_PowerKey_ShowTimedHint(path, detail) {
     global KH_PowerKeyHintGen, KH_PowerKeyHintTimeoutMs
 
     KH_PowerKeyHintGen += 1
     gen := KH_PowerKeyHintGen
-    KH_PowerKey_ShowHintText(text)
+    KH_PowerKey_ShowHintText(path, detail)
     SetTimer((*) => KH_PowerKey_HideHintIfCurrent(gen), -KH_PowerKeyHintTimeoutMs)
 }
 
-KH_PowerKey_ShowHintText(text) {
+KH_PowerKey_ShowHintText(path, detail) {
+    global KH_PowerKeyHintBackend
+
     x := 0
     y := 0
     if KH_PowerKey_GetCaretPoint(&x, &y) {
-        ToolTip(text, x + 12, y + 22, 19)
+        KH_PowerKey_RenderHint(path, detail, x + 12, y + 22)
         return
     }
 
     MouseGetPos(&x, &y)
-    ToolTip(text, x + 16, y + 18, 19)
+    KH_PowerKey_RenderHint(path, detail, x + 16, y + 18)
+}
+
+KH_PowerKey_RenderHint(path, detail, x, y) {
+    global KH_PowerKeyHintBackend
+
+    if KH_PowerKeyHintBackend = "gui" {
+        ToolTip(, , , 19)
+        KH_PowerKeyHintGui_Show(path, detail, x, y)
+        return
+    }
+
+    KH_PowerKeyHintGui_Hide()
+    text := path
+    if detail != "" {
+        text .= "`n" KH_PowerKey_HintIndent(path) detail
+    }
+    ToolTip(text, x, y, 19)
 }
 
 KH_PowerKey_HideHint() {
@@ -486,6 +501,7 @@ KH_PowerKey_HideHint() {
 
     KH_PowerKeyHintGen += 1
     ToolTip(, , , 19)
+    KH_PowerKeyHintGui_Hide()
 }
 
 KH_PowerKey_HideHintIfCurrent(gen) {
@@ -510,15 +526,14 @@ KH_PowerKey_BuildHintText(ctx) {
     path := KH_PowerKey_FormatPath(ctx)
     candidates := KH_PowerKey_CollectCandidates(ctx)
     if candidates.Length = 0 {
-        return path
+        return [path, ""]
     }
 
-    indent := KH_PowerKey_HintIndent(path)
-    text := path "`n"
+    detail := ""
     for item in candidates {
-        text .= indent item "`n"
+        detail .= item "`n"
     }
-    return RTrim(text, "`n")
+    return [path, RTrim(detail, "`n")]
 }
 
 KH_PowerKey_HintIndent(path) {
