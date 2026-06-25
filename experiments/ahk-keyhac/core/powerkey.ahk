@@ -111,9 +111,10 @@ KH_PowerKey_RegisterPrefix(key) {
     }
 
     keyName := KH_PowerKey_KeyToHotkey(key)
-    HotIf
+    HotIf (*) => KH_PowerKey_ShouldHandlePrefix(key)
     Hotkey "$" keyName, (*) => KH_PowerKey_OnKeyDown(key)
     Hotkey "$" keyName " up", (*) => KH_PowerKey_OnKeyUp(key)
+    HotIf
     KH_PowerKeyRegisteredPrefixes[key] := true
 }
 
@@ -170,6 +171,15 @@ KH_PowerKey_FlusherKeys() {
 KH_PowerKey_IsActive(*) {
     global KH_PowerKeyActiveCtx
     return KH_PowerKeyActiveCtx != ""
+}
+
+KH_PowerKey_ShouldHandlePrefix(key) {
+    global KH_PowerKeyActiveCtx
+
+    if KH_PowerKeyActiveCtx != "" && KH_PowerKeyActiveCtx.prefix = key {
+        return true
+    }
+    return KH_PowerKey_ActiveRoots(key).Length > 0
 }
 
 KH_PowerKey_OnKeyDown(key) {

@@ -43,7 +43,7 @@ Status: `core/powerkey.ahk` now provides a Keyhac-style AHK sequence dispatcher.
 | Feature | Chord/sequence | Source | Migration recommendation |
 | --- | --- | --- | --- |
 | TeXstudio bracket helpers | `U2-C/D/X/S/V/F` in `texstudio.exe` | `extensions/tex/texstudio_ext.py`, `extensions/tex/texstudio_commands.py` | Can migrate independently with `#HotIf WinActive("ahk_exe texstudio.exe")`; medium risk due to clipboard and delay handling. |
-| TeXstudio PowerKey colors/snippets | `f n`, `n b`, `m r`, `p l/g`, `g r`, `b l`, plus git snippets | `extensions/tex/texstudio_ext.py` | Depends on sequence engine and smart clipboard insert. |
+| TeXstudio PowerKey colors/snippets | `f n`, `n b`, `m r`, `p l/g`, `g r`, `b l`, plus git snippets | `extensions/tex/texstudio_ext.py` | Initial AHK migration. Scoped to `texstudio.exe`; hint candidates show TeX labels only in that scope. |
 
 ## Low Priority / Possibly No Migration
 
