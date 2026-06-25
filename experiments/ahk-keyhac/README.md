@@ -22,14 +22,16 @@ Run:
 The important part is `core/modifiers.ahk`, which exposes
 `KH_Bind("U1-W", callback)` for Keyhac-style migration work.
 
-`core/powerkey.ahk` provides the initial PowerKey sequence engine for later
-snippet, terminal-matrix, and app-specific sequence migrations. The first
-version supports plain prefix/suffix key sequences via `InputHook`; it does
-not yet implement Keyhac's full key-up trigger and flusher behavior.
+`core/powerkey.ahk` provides the initial PowerKey sequence engine for snippet,
+terminal-matrix, and app-specific sequence migrations. It supports plain
+prefix/suffix key sequences via `InputHook` and replays cancelled text prefixes
+as key events so IME composition can continue. The current timeout is 220ms,
+which is intentionally a test compromise between sequence entry and IME latency.
 
 Currently migrated local-only bindings:
 
 - `Ctrl+Alt+R`: reload this AHK script.
+- `g c-p`, `g p-p`, `g l-c`: paste the migrated git prompt snippets.
 - `U0-C`: in supported terminals, copy the current working directory to the
   clipboard by typing a shell command and pressing Enter after a short delay;
   otherwise fall back to `Alt+D`, then `Ctrl+C`.

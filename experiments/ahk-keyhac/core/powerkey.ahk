@@ -4,7 +4,7 @@ global KH_PowerKeyScopes := Map()
 global KH_PowerKeyScopeOrder := []
 global KH_PowerKeyRegisteredPrefixes := Map()
 global KH_PowerKeyActiveCtx := ""
-global KH_PowerKeyTimeoutSeconds := 0.45
+global KH_PowerKeyTimeoutSeconds := 0.22
 
 class KH_PowerKeyNode {
     __New() {
@@ -234,9 +234,9 @@ KH_PowerKey_KeyToHotkey(key) {
 
 KH_PowerKey_SendKey(key) {
     sendName := KH_PowerKey_KeyToHotkey(key)
-    if StrLen(key) = 1 {
-        SendText key
+    if RegExMatch(key, "^[a-z0-9]$") {
+        SendEvent "{Blind}{" key "}"
     } else {
-        SendEvent "{" sendName "}"
+        SendEvent "{Blind}{" sendName "}"
     }
 }
