@@ -10,6 +10,7 @@ SetWorkingDir A_ScriptDir
 #Include "extensions\input\mouse.ahk"
 #Include "extensions\input\native_passthrough.ahk"
 #Include "extensions\system\copy_path.ahk"
+#Include "extensions\system\terminal_matrix.ahk"
 #Include "extensions\ui\snippet_sequences.ahk"
 #Include "extensions\window\move_window.ahk"
 
@@ -26,5 +27,6 @@ KH_InitSelectionPassthroughExt()
 KH_InitMouseExt()
 KH_InitNativePassthroughExt()
 KH_InitCopyPathExt()
+KH_InitTerminalMatrixExt()
 KH_InitMoveWindowExt()
 KH_InitSnippetSequencesExt()

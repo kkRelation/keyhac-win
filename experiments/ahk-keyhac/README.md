@@ -32,6 +32,9 @@ Currently migrated local-only bindings:
 
 - `Ctrl+Alt+R`: reload this AHK script.
 - `g c-p`, `g p-p`, `g l-c`: paste the migrated git prompt snippets.
+- `s p-7`, `s p-5`: launch Windows Terminal with PowerShell 7 / 5.
+- `r p-7`, `r p-5`: launch Rio with PowerShell 7 / 5.
+- `g p-7`, `g p-5`: launch Ghostty with PowerShell 7 / 5.
 - `U0-C`: in supported terminals, copy the current working directory to the
   clipboard by typing a shell command and pressing Enter after a short delay;
   otherwise fall back to `Alt+D`, then `Ctrl+C`.
