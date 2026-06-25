@@ -22,6 +22,11 @@ Run:
 The important part is `core/modifiers.ahk`, which exposes
 `KH_Bind("U1-W", callback)` for Keyhac-style migration work.
 
+`core/powerkey.ahk` provides the initial PowerKey sequence engine for later
+snippet, terminal-matrix, and app-specific sequence migrations. The first
+version supports plain prefix/suffix key sequences via `InputHook`; it does
+not yet implement Keyhac's full key-up trigger and flusher behavior.
+
 Currently migrated local-only bindings:
 
 - `Ctrl+Alt+R`: reload this AHK script.

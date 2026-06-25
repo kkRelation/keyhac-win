@@ -4,6 +4,7 @@
 
 SetWorkingDir A_ScriptDir
 #Include "core\modifiers.ahk"
+#Include "core\powerkey.ahk"
 #Include "extensions\clipboard\selection_passthrough.ahk"
 #Include "extensions\input\mouse.ahk"
 #Include "extensions\input\native_passthrough.ahk"
