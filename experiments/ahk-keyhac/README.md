@@ -42,6 +42,8 @@ Currently migrated local-only bindings:
 - `g p-7`, `g p-5`: launch Ghostty with PowerShell 7 / 5.
 - In TeXstudio: `f n`, `n b`, `m r`, `p l`, `p g`, `g r`, `b l`
   insert or wrap TeX snippets/colors.
+- In TeXstudio: `U2-C/D/X/S/V/F` run TeXstudio bracket selection helpers
+  followed by copy/cut/paste.
 - `U0-C`: in supported terminals, copy the current working directory to the
   clipboard by typing a shell command and pressing Enter after a short delay;
   otherwise fall back to `Alt+D`, then `Ctrl+C`.

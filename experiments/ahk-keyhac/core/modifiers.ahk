@@ -33,9 +33,9 @@ KH_InitUserModifiers() {
     InstallKeybdHook true
 }
 
-KH_Bind(chord, action, options := "On") {
+KH_Bind(chord, action, options := "On", winTitle := "") {
     spec := KH_ParseChord(chord)
-    condition := KH_MakeCondition(spec.userMods)
+    condition := KH_MakeCondition(spec.userMods, winTitle)
 
     HotIf condition
     try {
@@ -99,13 +99,13 @@ KH_CanonicalChord(mods, suffix) {
     return canonical "-" StrUpper(suffix)
 }
 
-KH_MakeCondition(userMods) {
+KH_MakeCondition(userMods, winTitle := "") {
     global KH_UserModifierKeys
     physicalKeys := []
     for modName in userMods {
         physicalKeys.Push(KH_UserModifierKeys[modName])
     }
-    return (*) => KH_AllKeysDown(physicalKeys)
+    return (*) => KH_AllKeysDown(physicalKeys) && (winTitle = "" || WinActive(winTitle))
 }
 
 KH_AllKeysDown(keys) {

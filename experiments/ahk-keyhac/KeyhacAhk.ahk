@@ -15,6 +15,7 @@ CoordMode "Caret", "Screen"
 #Include "extensions\input\native_passthrough.ahk"
 #Include "extensions\system\copy_path.ahk"
 #Include "extensions\system\terminal_matrix.ahk"
+#Include "extensions\tex\texstudio_brackets.ahk"
 #Include "extensions\tex\texstudio_powerkey.ahk"
 #Include "extensions\ui\snippet_sequences.ahk"
 #Include "extensions\window\move_window.ahk"
@@ -33,6 +34,7 @@ KH_InitMouseExt()
 KH_InitNativePassthroughExt()
 KH_InitCopyPathExt()
 KH_InitTerminalMatrixExt()
+KH_InitTexstudioBracketsExt()
 KH_InitTexstudioPowerKeyExt()
 KH_InitMoveWindowExt()
 KH_InitSnippetSequencesExt()
