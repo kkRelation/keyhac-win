@@ -9,6 +9,7 @@ CoordMode "Caret", "Screen"
 #Include "core\modifiers.ahk"
 #Include "core\powerkey_hint_gui.ahk"
 #Include "core\powerkey.ahk"
+#Include "core\state_center.ahk"
 #Include "extensions\clipboard\paste_text.ahk"
 #Include "extensions\clipboard\selection_passthrough.ahk"
 #Include "extensions\input\mouse.ahk"
@@ -28,6 +29,7 @@ CoordMode "Caret", "Screen"
 ;   rshift -> F23 -> U4
 ^!r::Reload()
 
+KH_InitStateCenter()
 KH_InitUserModifiers()
 KH_InitSelectionPassthroughExt()
 KH_InitMouseExt()
