@@ -5,9 +5,10 @@ global KH_PowerKeyHintPathCtrl := ""
 global KH_PowerKeyHintDetailCtrl := ""
 global KH_PowerKeyHintGuiCharWidth := 8
 global KH_PowerKeyHintGuiLineHeight := 18
+global KH_PowerKeyHintGuiOpacity := 218
 
 KH_PowerKeyHintGui_Show(path, detail, x, y) {
-    global KH_PowerKeyHintGui, KH_PowerKeyHintPathCtrl, KH_PowerKeyHintDetailCtrl
+    global KH_PowerKeyHintGui, KH_PowerKeyHintPathCtrl, KH_PowerKeyHintDetailCtrl, KH_PowerKeyHintGuiOpacity
 
     KH_PowerKeyHintGui_Ensure()
     detail := KH_PowerKeyHintGui_IndentDetail(path, detail)
@@ -20,6 +21,7 @@ KH_PowerKeyHintGui_Show(path, detail, x, y) {
 
     KH_PowerKeyHintGui.Show("NA AutoSize x" x " y" y)
     try WinSetExStyle("+0x20", "ahk_id " KH_PowerKeyHintGui.Hwnd)
+    try WinSetTransparent(KH_PowerKeyHintGuiOpacity, "ahk_id " KH_PowerKeyHintGui.Hwnd)
 }
 
 KH_PowerKeyHintGui_Hide() {
