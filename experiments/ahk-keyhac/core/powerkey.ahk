@@ -330,14 +330,14 @@ KH_PowerKey_Cancel(ctx, emitPrefix) {
     global KH_PowerKeyActiveCtx
 
     KH_PowerKeyActiveCtx := ""
+    Critical "On"
     if emitPrefix {
         KH_PowerKey_SendKey(ctx.prefix)
-        Sleep(10)
     }
     for key in ctx.matched {
         KH_PowerKey_SendKey(key)
-        Sleep(10)
     }
+    Critical "Off"
 }
 
 KH_PowerKey_ActiveRoots(prefix) {

@@ -122,14 +122,11 @@ class _Dispatcher:
         # Keep ctx for possible chained suffix (e.g. g-p-p) while prefix is held.
         return True
     def _cancel(self, c, emit_pfx):
-        import time
         self.ctx = None
         if emit_pfx:
             self.emit(c.pfx_nm)
-            time.sleep(0.01)
         for k in c.matched:
             self.emit(self.kn(k))
-            time.sleep(0.01)
 
     def sched_tap(self, c):
         c.gen += 1
