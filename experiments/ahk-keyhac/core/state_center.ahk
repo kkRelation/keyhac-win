@@ -4,9 +4,18 @@ global KH_STATE_CLIENT_EXE := "D:\C2D\Desktop\Code\Python\automation\state_cente
 global KH_StateCenterWatchPid := 0
 
 KH_InitStateCenter() {
+    KH_EnsureStateCenterWatch()
+    SetTimer KH_EnsureStateCenterWatch, 5000
+}
+
+KH_EnsureStateCenterWatch() {
     global KH_STATE_CLIENT_EXE, KH_StateCenterWatchPid
 
     if !FileExist(KH_STATE_CLIENT_EXE) {
+        return
+    }
+
+    if KH_StateCenterWatchPid && ProcessExist(KH_StateCenterWatchPid) {
         return
     }
 
@@ -18,6 +27,8 @@ KH_InitStateCenter() {
 
     try {
         Run(command, , "Hide", &KH_StateCenterWatchPid)
+    } catch {
+        KH_StateCenterWatchPid := 0
     }
 }
 
