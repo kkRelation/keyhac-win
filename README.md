@@ -29,6 +29,9 @@ When adding power-key letter sequences such as `f-n` or `g-c-p`:
 | `U0-0` | Global | Toggle macro recording | `custom_config/main.py` |
 | `U0-3` | Global | Play the recorded macro | `custom_config/main.py` |
 | `U0-Left` / `U0-Right` / `U0-Up` / `U0-Down` | Global | Move the current window by 10px | `custom_config/main.py` |
+| `U0-J` / `U0-K` / `U0-L` / `U0-I` | Global | Move the active window left / down / right / up by 10px in the AHK prototype | `experiments/ahk-keyhac/extensions/window/move_window.ahk` |
+| `C-U0-J` / `C-U0-K` / `C-U0-L` / `C-U0-I` | Global | Move the active window left / down / right / up by 50px in the AHK prototype | `experiments/ahk-keyhac/extensions/window/move_window.ahk` |
+| `C-S-U0-J` / `C-S-U0-K` / `C-S-U0-L` / `C-S-U0-I` | Global | Move the active window left / down / right / up by 200px in the AHK prototype | `experiments/ahk-keyhac/extensions/window/move_window.ahk` |
 | `U0-Space` | Global | Open the application launcher list and start incremental search | `extensions/apps/app_launcher.py` |
 | `U0-A-Left` / `U0-A-Right` / `U0-A-Up` / `U0-A-Down` | Global | Move the mouse cursor by 10px | `extensions/input/mouse_ext.py` |
 | `D-U0-A-Space` / `U-U0-A-Space` | Global | Hold / release left mouse button | `extensions/input/mouse_ext.py` |

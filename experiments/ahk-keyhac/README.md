@@ -58,6 +58,9 @@ Currently migrated local-only bindings:
 - `C-S-U0-PageUp/PageDown/Home/End`: mouse wheel up / down / left / right by 20 notches.
 - `U0+Alt` alone: restore native `LWin` tap behavior while leaving
   `U0+Alt+other-key` passthrough intact.
+- `U0-J/K/L/I`: move the active window left / down / right / up by 10 px.
+- `C-U0-J/K/L/I`: move the active window left / down / right / up by 50 px.
+- `C-S-U0-J/K/L/I`: move the active window left / down / right / up by 200 px.
 
 Do not port Keyhac's bundled sample bindings unless the local `keyhac` or
 `keyhac-win` configuration changed their behavior. For example, the virtual

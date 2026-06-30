@@ -1,8 +1,18 @@
 KH_InitMoveWindowExt() {
-    KH_Bind("C-U0-Left", (*) => KH_MoveActiveWindow(-10, 0))
-    KH_Bind("C-U0-Right", (*) => KH_MoveActiveWindow(10, 0))
-    KH_Bind("C-U0-Up", (*) => KH_MoveActiveWindow(0, -10))
-    KH_Bind("C-U0-Down", (*) => KH_MoveActiveWindow(0, 10))
+    KH_Bind("U0-J", (*) => KH_MoveActiveWindow(-10, 0))
+    KH_Bind("U0-K", (*) => KH_MoveActiveWindow(0, 10))
+    KH_Bind("U0-L", (*) => KH_MoveActiveWindow(10, 0))
+    KH_Bind("U0-I", (*) => KH_MoveActiveWindow(0, -10))
+
+    KH_Bind("C-U0-J", (*) => KH_MoveActiveWindow(-50, 0))
+    KH_Bind("C-U0-K", (*) => KH_MoveActiveWindow(0, 50))
+    KH_Bind("C-U0-L", (*) => KH_MoveActiveWindow(50, 0))
+    KH_Bind("C-U0-I", (*) => KH_MoveActiveWindow(0, -50))
+
+    KH_Bind("C-S-U0-J", (*) => KH_MoveActiveWindow(-200, 0))
+    KH_Bind("C-S-U0-K", (*) => KH_MoveActiveWindow(0, 200))
+    KH_Bind("C-S-U0-L", (*) => KH_MoveActiveWindow(200, 0))
+    KH_Bind("C-S-U0-I", (*) => KH_MoveActiveWindow(0, -200))
 }
 
 KH_MoveActiveWindow(deltaX, deltaY) {
