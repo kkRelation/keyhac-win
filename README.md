@@ -33,6 +33,8 @@ When adding power-key letter sequences such as `f-n` or `g-c-p`:
 | `U0-A-Left` / `U0-A-Right` / `U0-A-Up` / `U0-A-Down` | Global | Move the mouse cursor by 10px | `extensions/input/mouse_ext.py` |
 | `D-U0-A-Space` / `U-U0-A-Space` | Global | Hold / release left mouse button | `extensions/input/mouse_ext.py` |
 | `U0-A-PageUp` / `U0-A-PageDown` | Global | Mouse wheel up / down | `extensions/input/mouse_ext.py` |
+| `C-U0-PageUp` / `C-U0-PageDown` / `C-U0-Home` / `C-U0-End` | Global | Mouse wheel up / down / left / right by 5 notches | `experiments/ahk-keyhac/extensions/input/mouse.ahk` |
+| `C-S-U0-PageUp` / `C-S-U0-PageDown` / `C-S-U0-Home` / `C-S-U0-End` | Global | Mouse wheel up / down / left / right by 20 notches | `experiments/ahk-keyhac/extensions/input/mouse.ahk` |
 | `Alt+U1+O` / `U1+Alt+O` | Global | Run `komorebic reload-configuration` | `kanata_config/win_to_f19.kbd` |
 | `U1+I` / `U1+Q` / `U1+M` | Global | Open Python shortcuts palette / close window / minimize window | `kanata_config/win_to_f19.kbd` |
 | `U1+H` / `U1+J` / `U1+K` / `U1+L` | Global | Focus window left / down / up / right in komorebi | `kanata_config/win_to_f19.kbd` |

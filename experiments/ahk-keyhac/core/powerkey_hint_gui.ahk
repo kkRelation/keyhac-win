@@ -8,12 +8,20 @@ global KH_PowerKeyHintGuiLineHeight := 18
 global KH_PowerKeyHintGuiOpacity := 218
 
 KH_PowerKeyHintGui_Show(path, detail, x, y) {
+    KH_PowerKeyHintGui_ShowStyled(path, detail, x, y, "powerkey")
+}
+
+KH_PowerKeyHintGui_ShowStyled(path, detail, x, y, style := "powerkey") {
     global KH_PowerKeyHintGui, KH_PowerKeyHintPathCtrl, KH_PowerKeyHintDetailCtrl, KH_PowerKeyHintGuiOpacity
 
     KH_PowerKeyHintGui_Ensure()
+    styleSpec := KH_PowerKeyHintGui_Style(style)
     detail := KH_PowerKeyHintGui_IndentDetail(path, detail)
     width := KH_PowerKeyHintGui_TextWidth(path, detail)
 
+    KH_PowerKeyHintGui.BackColor := styleSpec.back
+    KH_PowerKeyHintPathCtrl.Opt("c" styleSpec.pathText " Background" styleSpec.pathBg)
+    KH_PowerKeyHintDetailCtrl.Opt("c" styleSpec.detailText " Background" styleSpec.back)
     KH_PowerKeyHintPathCtrl.Text := path
     KH_PowerKeyHintDetailCtrl.Text := detail
     KH_PowerKeyHintPathCtrl.Move(, , width)
@@ -21,7 +29,7 @@ KH_PowerKeyHintGui_Show(path, detail, x, y) {
 
     KH_PowerKeyHintGui.Show("NA AutoSize x" x " y" y)
     try WinSetExStyle("+0x20", "ahk_id " KH_PowerKeyHintGui.Hwnd)
-    try WinSetTransparent(KH_PowerKeyHintGuiOpacity, "ahk_id " KH_PowerKeyHintGui.Hwnd)
+    try WinSetTransparent(styleSpec.opacity, "ahk_id " KH_PowerKeyHintGui.Hwnd)
 }
 
 KH_PowerKeyHintGui_Hide() {
@@ -72,4 +80,35 @@ KH_PowerKeyHintGui_TextWidth(path, detail) {
         maxChars := Max(maxChars, StrLen(line))
     }
     return Max(80, (maxChars + 2) * KH_PowerKeyHintGuiCharWidth)
+}
+
+KH_PowerKeyHintGui_Style(style) {
+    global KH_PowerKeyHintGuiOpacity
+
+    switch style {
+        case "success":
+            return {
+                back: "0E1F17",
+                pathBg: "14532D",
+                pathText: "DCFCE7",
+                detailText: "BBF7D0",
+                opacity: 232
+            }
+        case "failure":
+            return {
+                back: "271111",
+                pathBg: "7F1D1D",
+                pathText: "FEE2E2",
+                detailText: "FECACA",
+                opacity: 238
+            }
+        default:
+            return {
+                back: "20242A",
+                pathBg: "303846",
+                pathText: "F3F4F6",
+                detailText: "D5D8DF",
+                opacity: KH_PowerKeyHintGuiOpacity
+            }
+    }
 }

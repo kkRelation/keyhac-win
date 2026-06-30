@@ -35,7 +35,7 @@ no-match update resets the timer.
 
 Currently migrated local-only bindings:
 
-- `Ctrl+Alt+R`: reload this AHK script.
+- `Ctrl+Alt+R`: reload this AHK script and show a compact success/failure hint.
 - `g c-p`, `g p-p`, `g l-c`: paste the migrated git prompt snippets.
 - `s p-7`, `s p-5`: launch Windows Terminal with PowerShell 7 / 5.
 - `r p-7`, `r p-5`: launch Rio with PowerShell 7 / 5.
@@ -52,6 +52,8 @@ Currently migrated local-only bindings:
 - `D-U0-Space` / `U-U0-Space`: hold / release the left mouse button.
 - `U0-PageUp/PageDown`: mouse wheel up / down.
 - `U0-Home/End`: mouse horizontal wheel left / right.
+- `C-U0-PageUp/PageDown/Home/End`: mouse wheel up / down / left / right by 5 notches.
+- `C-S-U0-PageUp/PageDown/Home/End`: mouse wheel up / down / left / right by 20 notches.
 - `U0+Alt` alone: restore native `LWin` tap behavior while leaving
   `U0+Alt+other-key` passthrough intact.
 - `C-U0-Left/Right/Up/Down`: move the active window by 10 px.
