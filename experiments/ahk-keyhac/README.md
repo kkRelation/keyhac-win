@@ -49,6 +49,8 @@ Currently migrated local-only bindings:
   otherwise fall back to `Alt+D`, then `Ctrl+C`.
 - `U0-A`: probe-copy the current selection, then pass through `Alt+L`.
 - `U0-Left/Right/Up/Down`: move the mouse cursor by 10 px.
+- `C-U0-Left/Right/Up/Down`: move the mouse cursor by 50 px.
+- `C-S-U0-Left/Right/Up/Down`: move the mouse cursor by 200 px.
 - `D-U0-Space` / `U-U0-Space`: hold / release the left mouse button.
 - `U0-PageUp/PageDown`: mouse wheel up / down.
 - `U0-Home/End`: mouse horizontal wheel left / right.
@@ -56,7 +58,6 @@ Currently migrated local-only bindings:
 - `C-S-U0-PageUp/PageDown/Home/End`: mouse wheel up / down / left / right by 20 notches.
 - `U0+Alt` alone: restore native `LWin` tap behavior while leaving
   `U0+Alt+other-key` passthrough intact.
-- `C-U0-Left/Right/Up/Down`: move the active window by 10 px.
 
 Do not port Keyhac's bundled sample bindings unless the local `keyhac` or
 `keyhac-win` configuration changed their behavior. For example, the virtual

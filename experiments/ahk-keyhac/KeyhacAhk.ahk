@@ -21,7 +21,6 @@ CoordMode "Caret", "Screen"
 #Include "extensions\tex\texstudio_brackets.ahk"
 #Include "extensions\tex\texstudio_powerkey.ahk"
 #Include "extensions\ui\snippet_sequences.ahk"
-#Include "extensions\window\move_window.ahk"
 
 ; Kanata exports:
 ;   lmet   -> F19 -> U0
@@ -42,5 +41,4 @@ KH_InitUrlLauncherExt()
 KH_InitTerminalMatrixExt()
 KH_InitTexstudioBracketsExt()
 KH_InitTexstudioPowerKeyExt()
-KH_InitMoveWindowExt()
 KH_InitSnippetSequencesExt()

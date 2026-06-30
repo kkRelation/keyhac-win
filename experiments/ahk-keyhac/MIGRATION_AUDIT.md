@@ -8,8 +8,8 @@ Scope: migrate only personal `keyhac-win/custom_config` and `keyhac-win/extensio
 | --- | --- | --- | --- |
 | `U0-U4` virtual modifiers | `custom_config/main.py` | Done | Kanata `F19-F23` -> AHK `U0-U4`. |
 | `U0-C` copy path/copy | `custom_config/main.py` | Done | In supported terminals copy cwd; otherwise `Alt+D`, `Ctrl+C`. |
-| `U0` mouse layer | `extensions/input/mouse_ext.py` | Done with adjusted chords | AHK uses `U0-*`, not Keyhac `U0-A-*`, to preserve `U0+Alt => LWin`. |
-| `C-U0-Left/Right/Up/Down` window move | `custom_config/main.py` | Done | User-selected chord for active-window 10px movement. |
+| `U0` mouse layer | `extensions/input/mouse_ext.py` | Done with adjusted chords | AHK uses `U0-*`, not Keyhac `U0-A-*`, to preserve `U0+Alt => LWin`; `C-U0-*` and `C-S-U0-*` accelerate mouse movement. |
+| `C-U0-Left/Right/Up/Down` window move | `custom_config/main.py` | Deferred | Superseded in the AHK prototype by accelerated mouse movement on the same chord. |
 | `U0-lalt` native Win tap | Kanata/Keyhac combination semantics | Done | AHK passthrough patch preserves `U0-lalt-other-key`. |
 
 ## P1: Low Risk

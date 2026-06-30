@@ -33,6 +33,8 @@ When adding power-key letter sequences such as `f-n` or `g-c-p`:
 | `U0-A-Left` / `U0-A-Right` / `U0-A-Up` / `U0-A-Down` | Global | Move the mouse cursor by 10px | `extensions/input/mouse_ext.py` |
 | `D-U0-A-Space` / `U-U0-A-Space` | Global | Hold / release left mouse button | `extensions/input/mouse_ext.py` |
 | `U0-A-PageUp` / `U0-A-PageDown` | Global | Mouse wheel up / down | `extensions/input/mouse_ext.py` |
+| `C-U0-Left` / `C-U0-Right` / `C-U0-Up` / `C-U0-Down` | Global | Move the mouse cursor by 50px in the AHK prototype | `experiments/ahk-keyhac/extensions/input/mouse.ahk` |
+| `C-S-U0-Left` / `C-S-U0-Right` / `C-S-U0-Up` / `C-S-U0-Down` | Global | Move the mouse cursor by 200px in the AHK prototype | `experiments/ahk-keyhac/extensions/input/mouse.ahk` |
 | `C-U0-PageUp` / `C-U0-PageDown` / `C-U0-Home` / `C-U0-End` | Global | Mouse wheel up / down / left / right by 5 notches | `experiments/ahk-keyhac/extensions/input/mouse.ahk` |
 | `C-S-U0-PageUp` / `C-S-U0-PageDown` / `C-S-U0-Home` / `C-S-U0-End` | Global | Mouse wheel up / down / left / right by 20 notches | `experiments/ahk-keyhac/extensions/input/mouse.ahk` |
 | `Alt+U1+O` / `U1+Alt+O` | Global | Run `komorebic reload-configuration` | `kanata_config/win_to_f19.kbd` |
