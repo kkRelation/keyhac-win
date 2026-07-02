@@ -1,3 +1,6 @@
+global KH_CopyPathAddressBarDelayMs := 100
+global KH_CopyPathTerminalEnterDelayMs := 100
+
 KH_InitCopyPathExt() {
     KH_Bind("U0-C", (*) => KH_CopyPathOrCopy())
 }
@@ -15,7 +18,7 @@ KH_CopyPathOrCopy() {
     }
 
     Send("!d")
-    Sleep(30)
+    Sleep(KH_CopyPathAddressBarDelayMs)
     Send("^c")
 }
 
@@ -40,5 +43,5 @@ KH_CopyTerminalCurrentPath(processName) {
     }
 
     SendText(commandText)
-    SetTimer((*) => Send("{Enter}"), -100)
+    SetTimer((*) => Send("{Enter}"), -KH_CopyPathTerminalEnterDelayMs)
 }
