@@ -41,11 +41,12 @@ This file is the practical KKK ownership map for the current setup.
 | `U0+0` / `U0+3` | Toggle / play recorded macro | `custom_config/main.py` |
 | `U0+C` | In PowerShell terminal copy current path; otherwise fallback copy selection | `custom_config/main.py` |
 | `U0+Left/Right/Up/Down` | Move active window by 10px | `custom_config/main.py` |
+| `(C-)(S-)U0+Home/PageDown/PageUp/End` | Move active window left / down / up / right | `custom_config/main.py` |
 | `U0+Space` | Open application launcher list | `extensions/apps/app_launcher.py` |
 | `U0+A` | Copy selection first, then pass through `Alt+Left` | `extensions/clipboard/clipboard_ext.py` |
 | `U0+Alt+Left/Right/Up/Down` | Move mouse cursor | `extensions/input/mouse_ext.py` |
 | `D-U0-A-Space` / `U-U0-A-Space` | Hold / release left mouse button | `extensions/input/mouse_ext.py` |
-| `U0-A-PageUp/PageDown` | Mouse wheel up / down | `extensions/input/mouse_ext.py` |
+| `(C-)(S-)U0+H/J/K/L` | Mouse wheel left / down / up / right | `extensions/input/mouse_ext.py` |
 | `g-c-p` / `g-p-p` / `g-l-c` | Insert git workflow snippets | `extensions/ui/snippet_sequences.py` |
 | `U0-W` | Open window switcher list with incremental search | `extensions/window/window_switcher.py` |
 | `s-p-7` / `s-p-5` | Launch native `pwsh` / `powershell` | `extensions/ui/terminal_matrix_ext.py` |

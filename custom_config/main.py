@@ -266,3 +266,15 @@ def configure(keymap):
     keymap_global["U0-Right"] = keymap.MoveWindowCommand(+10, 0)
     keymap_global["U0-Up"]    = keymap.MoveWindowCommand(0, -10)
     keymap_global["U0-Down"]  = keymap.MoveWindowCommand(0, +10)
+
+    window_move_steps = {
+        "": 10,
+        "S-": 1,
+        "C-": 50,
+        "C-S-": 200,
+    }
+    for modifier, step in window_move_steps.items():
+        keymap_global[f"{modifier}U0-Home"] = keymap.MoveWindowCommand(-step, 0)
+        keymap_global[f"{modifier}U0-PageDown"] = keymap.MoveWindowCommand(0, +step)
+        keymap_global[f"{modifier}U0-PageUp"] = keymap.MoveWindowCommand(0, -step)
+        keymap_global[f"{modifier}U0-End"] = keymap.MoveWindowCommand(+step, 0)

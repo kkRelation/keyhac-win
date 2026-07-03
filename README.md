@@ -30,17 +30,11 @@ When adding power-key letter sequences such as `f-n` or `g-c-p`:
 | `U0-3` | Global | Play the recorded macro | `custom_config/main.py` |
 | `Ctrl+Alt+R` / `Ctrl+Shift+Alt+R` | Global | Reload the AHK prototype in-process / restart it through `run-ahk-keyhac-hidden.vbs` | `experiments/ahk-keyhac/KeyhacAhk.ahk` |
 | `U0-Left` / `U0-Right` / `U0-Up` / `U0-Down` | Global | Move the current window by 10px | `custom_config/main.py` |
-| `U0-J` / `U0-K` / `U0-L` / `U0-I` | Global | Move the active window left / down / right / up by 10px in the AHK prototype | `experiments/ahk-keyhac/extensions/window/move_window.ahk` |
-| `C-U0-J` / `C-U0-K` / `C-U0-L` / `C-U0-I` | Global | Move the active window left / down / right / up by 50px in the AHK prototype | `experiments/ahk-keyhac/extensions/window/move_window.ahk` |
-| `C-S-U0-J` / `C-S-U0-K` / `C-S-U0-L` / `C-S-U0-I` | Global | Move the active window left / down / right / up by 200px in the AHK prototype | `experiments/ahk-keyhac/extensions/window/move_window.ahk` |
+| `(C-)(S-)U0-Home` / `(C-)(S-)U0-PageDown` / `(C-)(S-)U0-PageUp` / `(C-)(S-)U0-End` | Global | Move the active window left / down / up / right | `custom_config/main.py` |
 | `U0-Space` | Global | Open the application launcher list and start incremental search | `extensions/apps/app_launcher.py` |
 | `U0-A-Left` / `U0-A-Right` / `U0-A-Up` / `U0-A-Down` | Global | Move the mouse cursor by 10px | `extensions/input/mouse_ext.py` |
 | `D-U0-A-Space` / `U-U0-A-Space` | Global | Hold / release left mouse button | `extensions/input/mouse_ext.py` |
-| `U0-A-PageUp` / `U0-A-PageDown` | Global | Mouse wheel up / down | `extensions/input/mouse_ext.py` |
-| `C-U0-Left` / `C-U0-Right` / `C-U0-Up` / `C-U0-Down` | Global | Move the mouse cursor by 50px in the AHK prototype | `experiments/ahk-keyhac/extensions/input/mouse.ahk` |
-| `C-S-U0-Left` / `C-S-U0-Right` / `C-S-U0-Up` / `C-S-U0-Down` | Global | Move the mouse cursor by 200px in the AHK prototype | `experiments/ahk-keyhac/extensions/input/mouse.ahk` |
-| `C-U0-PageUp` / `C-U0-PageDown` / `C-U0-Home` / `C-U0-End` | Global | Mouse wheel up / down / left / right by 5 notches | `experiments/ahk-keyhac/extensions/input/mouse.ahk` |
-| `C-S-U0-PageUp` / `C-S-U0-PageDown` / `C-S-U0-Home` / `C-S-U0-End` | Global | Mouse wheel up / down / left / right by 20 notches | `experiments/ahk-keyhac/extensions/input/mouse.ahk` |
+| `(C-)(S-)U0-H` / `(C-)(S-)U0-J` / `(C-)(S-)U0-K` / `(C-)(S-)U0-L` | Global | Mouse wheel left / down / up / right | `extensions/input/mouse_ext.py` |
 | `Alt+U1+O` / `U1+Alt+O` | Global | Run `komorebic reload-configuration` | `kanata_config/win_to_f19.kbd` |
 | `U1+I` / `U1+Q` / `U1+M` | Global | Open Python shortcuts palette / close window / minimize window | `kanata_config/win_to_f19.kbd` |
 | `U1+H` / `U1+J` / `U1+K` / `U1+L` | Global | Focus window left / down / up / right in komorebi | `kanata_config/win_to_f19.kbd` |
