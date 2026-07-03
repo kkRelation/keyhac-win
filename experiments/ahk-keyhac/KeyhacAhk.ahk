@@ -13,6 +13,7 @@ CoordMode "Caret", "Screen"
 #Include "extensions\clipboard\paste_text.ahk"
 #Include "extensions\clipboard\selection_passthrough.ahk"
 #Include "extensions\apps\url_launcher.ahk"
+#Include "extensions\input\helix_navigation.ahk"
 #Include "extensions\input\mouse.ahk"
 #Include "extensions\input\native_passthrough.ahk"
 #Include "extensions\system\copy_path.ahk"
@@ -29,6 +30,7 @@ CoordMode "Caret", "Screen"
 ;   ralt   -> F21 -> U2
 ;   rctrl  -> F22 -> U3
 ;   rshift -> F23 -> U4
+;   helix U1 mode caps -> F24 -> H1
 ^!r::KH_ReloadScript()
 ^+!r::KH_RestartScriptViaLauncher()
 
@@ -36,6 +38,7 @@ KH_InitStateCenter()
 KH_InitReloadStatusExt()
 KH_InitUserModifiers()
 KH_InitSelectionPassthroughExt()
+KH_InitHelixNavigationExt()
 KH_InitMouseExt()
 KH_InitNativePassthroughExt()
 KH_InitCopyPathExt()

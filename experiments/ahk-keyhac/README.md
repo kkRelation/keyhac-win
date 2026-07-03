@@ -12,6 +12,7 @@ Kanata currently exports the five user modifiers as function keys:
 | U2 | ralt | F21 |
 | U3 | rctrl | F22 |
 | U4 | rshift | F23 |
+| H1 | caps in Kanata helix semantic mode | F24 |
 
 Run:
 
@@ -53,6 +54,9 @@ Currently migrated local-only bindings:
 - `C-S-U0-Left/Right/Up/Down`: move the mouse cursor by 200 px.
 - `D-U0-Space` / `U-U0-Space`: hold / release the left mouse button.
 - `(C-)(S-)U0-H/J/K/L`: mouse wheel left / down / up / right.
+- `H1-H/J/K/L`: helix navigation cursor left / down / up / right.
+- `H1-U/I/N/M/Y/O`: PageUp / PageDown / Home / End / Ctrl+Left / Ctrl+Right.
+- `Alt+H1-H/J/K/L`: mouse wheel left / down / up / right.
 - `U0+Alt` alone: restore native `LWin` tap behavior while leaving
   `U0+Alt+other-key` passthrough intact.
 - `(C-)(S-)U0-Home/PageDown/PageUp/End`: move the active window left /

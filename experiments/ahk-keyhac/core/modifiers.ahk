@@ -5,7 +5,8 @@ global KH_UserModifierKeys := Map(
     "U1", "F20",
     "U2", "F21",
     "U3", "F22",
-    "U4", "F23"
+    "U4", "F23",
+    "H1", "F24"
 )
 
 global KH_ModifierSymbols := Map(
