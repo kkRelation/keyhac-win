@@ -3,7 +3,7 @@
 global KH_PowerKeyHintGui := ""
 global KH_PowerKeyHintPathCtrl := ""
 global KH_PowerKeyHintDetailCtrl := ""
-global KH_PowerKeyHintGuiCharWidth := 8
+global KH_PowerKeyHintGuiCharWidth := 11
 global KH_PowerKeyHintGuiLineHeight := 18
 global KH_PowerKeyHintGuiOpacity := 218
 
@@ -92,6 +92,14 @@ KH_PowerKeyHintGui_Style(style) {
                 pathBg: "14532D",
                 pathText: "DCFCE7",
                 detailText: "BBF7D0",
+                opacity: 232
+            }
+        case "reboot":
+            return {
+                back: "111827",
+                pathBg: "1D4ED8",
+                pathText: "DBEAFE",
+                detailText: "BFDBFE",
                 opacity: 232
             }
         case "failure":

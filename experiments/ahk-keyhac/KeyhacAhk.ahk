@@ -30,6 +30,7 @@ CoordMode "Caret", "Screen"
 ;   rctrl  -> F22 -> U3
 ;   rshift -> F23 -> U4
 ^!r::KH_ReloadScript()
+^+!r::KH_RestartScriptViaLauncher()
 
 KH_InitStateCenter()
 KH_InitReloadStatusExt()

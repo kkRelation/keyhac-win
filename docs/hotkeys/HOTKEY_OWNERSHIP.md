@@ -55,6 +55,13 @@ This file is the practical KKK ownership map for the current setup.
 | `n-b`, `m-r`, `p-l`, `p-g`, `g-r`, `b-l` in `texstudio.exe` | Insert TeX color wrappers | `extensions/tex/texstudio_ext.py` |
 | `U2-C/D/X/S/V/F` in `texstudio.exe` | Bracket copy / cut / paste helpers | `extensions/tex/texstudio_ext.py` |
 
+## AHK Prototype-Owned
+
+| Shortcut group | Behavior | Source |
+| --- | --- | --- |
+| `Ctrl+Alt+R` | Reload `KeyhacAhk.ahk` in-process through AHK `Reload()` | `experiments/ahk-keyhac/KeyhacAhk.ahk` |
+| `Ctrl+Shift+Alt+R` | Restart `KeyhacAhk.ahk` through `run-ahk-keyhac-hidden.vbs` | `experiments/ahk-keyhac/KeyhacAhk.ahk` |
+
 ## List Window Controls
 
 | Shortcut | Behavior |

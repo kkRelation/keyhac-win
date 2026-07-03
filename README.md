@@ -28,6 +28,7 @@ When adding power-key letter sequences such as `f-n` or `g-c-p`:
 | `U1+;` | Global | Open clipboard history list and start incremental search | `custom_config/main.py` |
 | `U0-0` | Global | Toggle macro recording | `custom_config/main.py` |
 | `U0-3` | Global | Play the recorded macro | `custom_config/main.py` |
+| `Ctrl+Alt+R` / `Ctrl+Shift+Alt+R` | Global | Reload the AHK prototype in-process / restart it through `run-ahk-keyhac-hidden.vbs` | `experiments/ahk-keyhac/KeyhacAhk.ahk` |
 | `U0-Left` / `U0-Right` / `U0-Up` / `U0-Down` | Global | Move the current window by 10px | `custom_config/main.py` |
 | `U0-J` / `U0-K` / `U0-L` / `U0-I` | Global | Move the active window left / down / right / up by 10px in the AHK prototype | `experiments/ahk-keyhac/extensions/window/move_window.ahk` |
 | `C-U0-J` / `C-U0-K` / `C-U0-L` / `C-U0-I` | Global | Move the active window left / down / right / up by 50px in the AHK prototype | `experiments/ahk-keyhac/extensions/window/move_window.ahk` |
