@@ -21,10 +21,10 @@ When adding power-key letter sequences such as `f-n` or `g-c-p`:
 | Shortcut | Scope | Behavior | Source |
 | --- | --- | --- | --- |
 | `U1-A` | Global | Send the native `CapsLock` key | `kanata_config/win_to_f19.kbd` |
-| `C-A-S-7` / `C-A-S-8` / `C-A-S-9` / `C-A-S-0` / `C-A-S--` | Global | Toggle `RAlt` / `RCtrl` / `RShift` / `Win` / `Caps` User-mode state | `custom_config/main.py` |
+| `C-A-S-7` / `C-A-S-8` / `C-A-S-9` / `C-A-S-0` / `C-A-S--` | Global | Toggle `RAlt` / `RCtrl` / `RShift` / `Win` / `Caps` User-mode state. Python Keyhac backend owns this in `custom_config/main.py`; AHK/Kanata runtime owns this in `kanata_config/win_to_f19.kbd`. | backend-specific |
 | `U0+Alt` | Global | Send the native `LWin` key | `kanata_config/win_to_f19.kbd` |
 | `Ctrl+U1` / `U1+Ctrl` | Global | Toggle komorebi modal mode on/off | `kanata_config/win_to_f19.kbd` |
-| `C-S-A-U` | Global | Toggle all five User-mode states on/off together | `custom_config/main.py` |
+| `C-S-A-U` | Global | Toggle all five User-mode states on/off together. Python Keyhac backend owns this in `custom_config/main.py`; AHK/Kanata runtime owns this in `kanata_config/win_to_f19.kbd`. | backend-specific |
 | `U1+;` | Global | Open clipboard history list and start incremental search | `custom_config/main.py` |
 | `U0-0` | Global | Toggle macro recording | `custom_config/main.py` |
 | `U0-3` | Global | Play the recorded macro | `custom_config/main.py` |

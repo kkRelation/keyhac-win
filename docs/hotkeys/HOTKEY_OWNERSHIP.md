@@ -4,7 +4,8 @@ This file is the practical KKK ownership map for the current setup.
 
 ## Rule
 
-- Kanata owns simple chords and direct command execution.
+- Kanata owns simple chords and direct command execution in the AHK/Kanata runtime.
+- Keyhac owns U0-U4 export toggles only when the Python Keyhac backend is running.
 - Keyhac owns Python workflows, UI, shared state publishing, and app-specific logic.
 - Bare `U1+U2` / `U2+U1` intentionally has no action.
 
@@ -30,13 +31,15 @@ This file is the practical KKK ownership map for the current setup.
 | `U1+1..9` / `Alt+U1+1..9` | Focus workspace / move to workspace | `kanata_config/win_to_f19.kbd` |
 | `U1+U2+0` / `U1+U2+1` | Toggle bar visibility for monitor 0 / 1 | `kanata_config/win_to_f19.kbd` |
 | Modal `H/J/K/L`, `Shift+H/J/K/L`, `1..9`, `Shift+1..9`, `Shift+Enter`, `Shift+O`, `Shift+-`, `Shift+=` | Modal focus / move / workspace / resize / reload commands | `kanata_config/win_to_f19.kbd` |
+| `C-A-S-7/8/9/0/-` | Toggle `U2/U3/U4/U0/U1` export modes in the AHK/Kanata runtime | `kanata_config/win_to_f19.kbd` |
+| `C-S-A-U` | Toggle all five exported modifier modes in the AHK/Kanata runtime | `kanata_config/win_to_f19.kbd` |
 
 ## Keyhac-Owned
 
 | Shortcut group | Behavior | Source |
 | --- | --- | --- |
-| `C-A-S-7/8/9/0/-` | Toggle `U2/U3/U4/U0/U1` modifier export modes | `custom_config/main.py` |
-| `C-S-A-U` | Toggle all five exported modifier modes | `custom_config/main.py` |
+| `C-A-S-7/8/9/0/-` | Toggle `U2/U3/U4/U0/U1` export modes when using the Python Keyhac backend | `custom_config/main.py` |
+| `C-S-A-U` | Toggle all five exported modifier modes when using the Python Keyhac backend | `custom_config/main.py` |
 | `U1+;` | Open clipboard history list | `custom_config/main.py` |
 | `U0+0` / `U0+3` | Toggle / play recorded macro | `custom_config/main.py` |
 | `U0+C` | In PowerShell terminal copy current path; otherwise fallback copy selection | `custom_config/main.py` |
