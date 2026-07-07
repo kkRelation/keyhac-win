@@ -1,5 +1,15 @@
 #Requires AutoHotkey v2.0
 
+KH_MakeHomeThenPasteTextCommand(text) {
+    pasteText := KH_MakePasteTextCommand(text)
+    return (*) => KH_RunHomeThenPasteTextCommand(pasteText)
+}
+
+KH_RunHomeThenPasteTextCommand(pasteText) {
+    SendEvent "{Home}"
+    SetTimer(pasteText, -50)
+}
+
 KH_InitSnippetSequencesExt() {
     KH_PowerKey_Add(
         "g",
@@ -26,5 +36,13 @@ KH_InitSnippetSequencesExt() {
         "__global__",
         "",
         "rollback branch prompt"
+    )
+    KH_PowerKey_Add(
+        "f",
+        "y-v",
+        KH_MakeHomeThenPasteTextCommand("翻译至最简："),
+        "__global__",
+        "",
+        "translate concise prompt"
     )
 }

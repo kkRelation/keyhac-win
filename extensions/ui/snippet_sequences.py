@@ -1,7 +1,18 @@
 from extensions.clipboard.clipboard_commands import make_paste_text_without_history_command
+from extensions.input.key_inject import direct_inject_keys
 
 ENABLE_RESUME_SEQUENCE = False
 ENABLE_FORK_SEQUENCE = False
+
+
+def make_home_then_paste_text_command(keymap, text):
+    paste_text = make_paste_text_without_history_command(keymap, text)
+
+    def _command():
+        direct_inject_keys("Home")
+        keymap.delayedCall(paste_text, 50)
+
+    return _command
 
 
 def add_git_commit_sequence(keymap, powerkey):
@@ -48,5 +59,14 @@ def add_fork_sequence(keymap, powerkey):
                 "/fork",
                 post_keys=["Enter"],
             ),
+        },
+    )
+
+
+def add_translate_prompt_sequence(keymap, powerkey):
+    powerkey.add(
+        "f",
+        {
+            "y-v": make_home_then_paste_text_command(keymap, "翻译至最简："),
         },
     )

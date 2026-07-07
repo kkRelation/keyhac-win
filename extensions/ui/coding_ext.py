@@ -6,6 +6,7 @@ from extensions.ui.snippet_sequences import (
     add_fork_sequence,
     add_git_commit_sequence,
     add_resume_sequence,
+    add_translate_prompt_sequence,
 )
 
 
@@ -19,5 +20,6 @@ def init_coding_ext(keymap):
         add_resume_sequence(keymap, pk)
     if ENABLE_FORK_SEQUENCE:
         add_fork_sequence(keymap, pk)
+    add_translate_prompt_sequence(keymap, pk)
 
     pk.finalize()
