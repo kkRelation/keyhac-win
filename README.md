@@ -28,7 +28,7 @@ When adding power-key letter sequences such as `f-n` or `g-c-p`:
 | `U1+;` | Global | Open clipboard history list and start incremental search | `custom_config/main.py` |
 | `U0-0` | Global | Toggle macro recording | `custom_config/main.py` |
 | `U0-3` | Global | Play the recorded macro | `custom_config/main.py` |
-| `Ctrl+Alt+R` / `Ctrl+Shift+Alt+R` | Global | Reload the AHK prototype in-process / restart it through `run-ahk-keyhac-hidden.vbs` | `experiments/ahk-keyhac/KeyhacAhk.ahk` |
+| `Ctrl+Alt+R` / `Ctrl+Shift+Alt+R` | Global | Reload the extracted AHK runtime in-process / restart it through `run-ahk-keyhac-hidden.vbs` | `../ahk-keyhac/KeyhacAhk.ahk` |
 | `U0-Left` / `U0-Right` / `U0-Up` / `U0-Down` | Global | Move the current window by 10px | `custom_config/main.py` |
 | `(C-)(S-)U0-Home` / `(C-)(S-)U0-PageDown` / `(C-)(S-)U0-PageUp` / `(C-)(S-)U0-End` | Global | Move the active window left / down / up / right | `custom_config/main.py` |
 | `U0-Space` | Global | Open the application launcher list and start incremental search | `extensions/apps/app_launcher.py` |
@@ -53,6 +53,7 @@ When adding power-key letter sequences such as `f-n` or `g-c-p`:
 | `1..8` in modal mode | Global | Focus workspace 0..7 in komorebi | `kanata_config/win_to_f19.kbd` |
 | `g-c-p` | Global / Coding apps | Type the preset git-commit phrase | `extensions/ui/coding_ext.py` |
 | `g-p-p` | Global / Coding apps | Type the preset git-pull-merge-push phrase | `extensions/ui/coding_ext.py` |
+| `f-y-v` | Global / Coding apps | Move to line start and paste `翻译至最简：` without leaving it in clipboard history | `extensions/ui/coding_ext.py` |
 | `s-p-7` / `s-p-5` | Global | Launch native `pwsh` / `powershell` | `extensions/ui/terminal_matrix_ext.py` |
 | `r-p-7` / `r-p-5` | Global | Launch `rio` with `pwsh` / `powershell` | `extensions/ui/terminal_matrix_ext.py` |
 | `g-p-7` / `g-p-5` | Global | Launch `ghostty` with `pwsh` / `powershell` | `extensions/ui/terminal_matrix_ext.py` |
